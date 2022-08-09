@@ -4,6 +4,8 @@ const flightController = require('../controllers/flights')
 
 /* GET users listing. */
 // endpoint for this is /flights/new
+router.get('/', flightController.index)
+
 router.get('/new', flightController.new)
 // endpoint is /flights
 router.post('/', flightController.create)
