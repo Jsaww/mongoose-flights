@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/tickets');
+const flightsRouter = require('./routes/flights');
 
 // require the database file to establish the connection with the database file!
 require('./config/database')
@@ -23,7 +23,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/flights', flightsRouter);
 
 
 // catch 404 and forward to error handler
