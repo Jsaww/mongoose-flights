@@ -4,8 +4,16 @@ const Flight = require('../models/flights');
 module.exports = {
     new: newFlight,
     create,
-    index
+    index,
+    show
 }
+
+function show(req, res){
+    Flight.findById(req.parms.id, function(err, flight){
+        res.render('flights/show', {title: 'Flight Detail', flight});
+    });
+}
+
 
 function index(req, res){
     Flight.find({}, function(err, allOfTheFlightsInTheDatabase){
