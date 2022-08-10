@@ -4,8 +4,10 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+const methodOverride = require('method-override');
 const indexRouter = require('./routes/index');
 const flightsRouter = require('./routes/flights');
+const destinationsRouter = require('./routes/destinations');
 
 
 // require the database file to establish the connection with the database file!
@@ -22,10 +24,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride('_method'));
+
 
 app.use('/', indexRouter);
 app.use('/flights', flightsRouter);
-
+app.use('/', destinationsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

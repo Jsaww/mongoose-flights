@@ -9,8 +9,8 @@ module.exports = {
 }
 
 function show(req, res){
-    Flight.findById(req.parms.id, function(err, flight){
-        res.render('flights/show', {title: 'Flight Detail', flight});
+    Flight.findById(req.parms.id, function(err, flightDocumentCreatedInTheDatabase){
+        res.render('flights/show', {title: 'Flight Detail', flightDocumentCreatedInTheDatabase});
     });
 }
 
@@ -35,12 +35,12 @@ function newFlight(req, res){
 
 function create(req, res) {
     console.log(req.body, '<-- This is what was submitted');
-    Flight.create(req.body, function(err, flightDocumentCreatedInDatabase) {
+    Flight.create(req.body, function(err, flightDocumentCreatedInTheDatabase) {
         if (err) {
             console.log(err, ' <-- Error in the Flights create controller!');
             return res.render('flights/new.ejs')
         }
-        console.log(flightDocumentCreatedInDatabase, ' <-- Flight created in the database');
+        console.log(flightDocumentCreatedInTheDatabase, ' <-- Flight created in the database');
         res.redirect('/flights');
     })
 }
