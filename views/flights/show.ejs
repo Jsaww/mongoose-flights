@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="flight-info">Flight Details</h1>
+
+    <section id="show-page">
+    <div class="flight-details">
+        <div>Flight: </div>
+        <div><%= flight.airline %></div>
+    <br>
+        <div>Airport: </div>
+        <div><%= flight.airport %></div>
+    <br>
+        <div>Flight Number: </div>
+        <div><%= flight.flightNo %></div>
+    <br>
+        <div>Departing Date: </div>
+        <div><%= flight.departs %></div>
+    
+    </div>  
+
+    <br>
+    <br>
+
+    <form id="add-destinations-form" method="POST"
+    action="/flights/<%= flight._id %>/destinations">      
+    <label>Destination:</label>
+    <textarea name="airport"></textarea>
+    <label>Arrival: </label>
+    <textarea name="arrival"></textarea>
+    <input type="submit" value="Add Destination Details">
+    </form>
+
+    <br>
+    <br>
+    
+    <div id="destination-info">
+    <% if (flight.destination.length) { %>
+        <table>
+          <thead>
+            <tr>
+              <th>Airport: </th>
+              <br>
+              <th>Arrival Date:</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% flight.destination.forEach(function(f) { %>
+              <tr>
+                <td><%= f.airport %></td>
+                <td><%= f.arrival %></td>
+              </tr>
+              <form method="POST" action="/flights/:id/destinations<%= flight.airport %>?_method=DELETE">
+                <button type="submit">Delete Current Destination</button>
+              </form>
+            <% }); %>
+          </tbody>
+        </table>
+      <% } else { %>
+        <h5>No Destination Details Yet</h5>
+      <% } %>
+
+      </div>
+
+    </section>
+      
+    <br>
+
+      <a href="/flights">Return to All Flights</a>
+
+</body>
+</html>
