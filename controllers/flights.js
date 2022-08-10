@@ -20,7 +20,6 @@ function index(req, res){
         flights: allOfTheFlightsInTheDatabase
     })
 })
-
 }
 
 function newFlight(req, res){

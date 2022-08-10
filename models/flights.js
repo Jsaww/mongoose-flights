@@ -16,7 +16,7 @@ const destinationSchema = new mongoose.Schema({
 });
 
 
-// Creates Schema that defines the document (objects) in a MongoDB collection (flights)
+
 const flightSchema = new mongoose.Schema({
 airline: {
 type: String,

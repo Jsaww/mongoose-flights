@@ -1,8 +1,7 @@
-// Always remember to require Mongoose before anything else, and define Schema.
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// Create a Ticket Schema in the Ticket Model.
+// Make Tickt Schema for Ticket model
 const ticketSchema = new Schema({
     seat: {
         type: String,
