@@ -3,10 +3,18 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h1><%= title %></h1>
-    <a href="/flights/new">Add Flight</a>
-    <a href="/flights">All Flights</a>
+    <nav class="directory">
+      <a href="/flights">All Flights</a>
+      <a href="/flights/new">Add a Flight</a>
+    </nav>
+    <section class="intro">
+    <h1 id="express-title"><%= title %> Lab</h1>
+    <h1 id="welcome-msg">Gabriel's International Airport</h1>
+    <p id="flights-intro">Welcome! In this lab, you can use the navigation bar above to view all upcoming and past flights, as well as add new and incoming flights. For all posted flights, click the Details button to view more details about the flight itself, including destination information. Safe travels!</p>
+    </section>
+
   </body>
 </html>

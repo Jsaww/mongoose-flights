@@ -1,6 +1,7 @@
 // Before anything else, require the Ticket and Flight Models below. 
 const Ticket = require('../models/ticket');
 const Flight = require('../models/flights');
+const {all} = require('../routes');
 
 module.exports = {
     new: newTicket,

@@ -1,5 +1,6 @@
 const Flight = require('../models/flights');
-
+const Ticket = require('../models/ticket');
+const {all} = require('../routes');
 
 module.exports = {
     new: newFlight,
@@ -7,13 +8,6 @@ module.exports = {
     index,
     show
 }
-
-function show(req, res){
-    Flight.findById(req.parms.id, function(err, flightDocumentCreatedInTheDatabase){
-        res.render('flights/show', {title: 'Flight Detail', flightDocumentCreatedInTheDatabase});
-    });
-}
-
 
 function index(req, res){
     Flight.find({}, function(err, allOfTheFlightsInTheDatabase){
@@ -44,3 +38,12 @@ function create(req, res) {
         res.redirect('/flights');
     })
 }
+
+function show(req, res) {
+    
+    Flight.findById(req.params.id, function(err, flightDocumentCreatedInTheDatabase) {
+        Ticket.find({flight: flightDocumentCreatedInTheDatabase._id}, function(err, tickets) {
+            res.render('flights/show', {title: 'Flight Document', flight: flightDocumentCreatedInTheDatabase, tickets: tickets});
+        })
+        })
+    };
