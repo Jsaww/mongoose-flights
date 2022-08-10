@@ -1,6 +1,6 @@
 const Flight = require('../models/flights');
 const Ticket = require('../models/ticket');
-const {all} = require('../routes');
+
 
 module.exports = {
     new: newFlight,
